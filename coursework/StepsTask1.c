@@ -49,13 +49,36 @@ int main() {
         printf("Error opening file\n");
         return 1;
     }
-    int recordcount = 0;
+    //defining variables
+    FITNESS_DATA records[59];
+    int counter=0;
+    int recordCount = 0;
     char line[200];
-    while (fgets(line, sizeof(line), file)) {
+    int line_count = 0;
+
+    //geting the number of records
+    while (fgets(line, sizeof(line), file)) 
         recordCount++;
-    }
-    printf("Number of records in file: %d\n", recordCount);
     
+    
+    printf("Number of records in file: %d\n", recordCount);
+
+    rewind(file);
+
+    //printing out the first 3 lines
+    while (line_count < 3 && fgets(line, sizeof(line), file) != NULL) {
+        //replacing , for /
+         for (int i = 0; line[i]; i++) {
+            if (line[i] == ',') {
+                line[i] = '/';
+            }
+        }
+        printf("%s", line);
+        line_count++;
+    }
+
+
+  //closing file
     fclose(file);
     return 0;
 
