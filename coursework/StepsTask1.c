@@ -72,8 +72,11 @@ int main() {
             if (line[i] == ',') {
                 line[i] = '/';
             }
+	//removing spaces    
+         line[strcspn(line, "\n")] = '\0';
+        
         }
-        printf("%s", line);
+        printf("%s\n", line);
         line_count++;
     }
 
