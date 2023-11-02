@@ -62,7 +62,7 @@ int main() {
     
     
     printf("Number of records in file: %d\n", recordCount);
-
+//rewinding file due to recordcount swaping with the lines read
     rewind(file);
 
     //printing out the first 3 lines
