@@ -52,16 +52,16 @@ int main() {
     //defining variables
     FITNESS_DATA records[59];
     int counter=0;
-    int recordCount = 0;
+    int recordcount = 0;
     char line[200];
     int line_count = 0;
 
     //geting the number of records
     while (fgets(line, sizeof(line), file)) 
-        recordCount++;
+        recordcount++;
     
     
-    printf("Number of records in file: %d\n", recordCount);
+    printf("Number of records in file: %d\n", recordcount);
 //rewinding file due to recordcount swaping with the lines read
     rewind(file);
 
@@ -83,3 +83,7 @@ int main() {
     return 0;
 
 }
+
+//references:
+//read_file.c(week4)
+//https://www.javatpoint.com/rewind-in-c (rewind function)
