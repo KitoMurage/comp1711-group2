@@ -55,38 +55,43 @@ int main() {
     int recordcount = 0;
     char line[200];
     int line_count = 0;
+    char date[11];
+	char time[6];
+	char steps[1000];
+
 
     //geting the number of records
     while (fgets(line, sizeof(line), file)) 
         recordcount++;
     
     
-    printf("Number of records in file: %d\n", recordcount);
+    printf("Number of records in file:%d\n", recordcount);
 //rewinding file due to recordcount swaping with the lines read
     rewind(file);
 
-    //printing out the first 3 lines
+   // Printing the first 3 lines
     while (line_count < 3 && fgets(line, sizeof(line), file) != NULL) {
-        //replacing , for /
-         for (int i = 0; line[i]; i++) {
-            if (line[i] == ',') {
-                line[i] = '/';
-            }
-	//removing spaces    
-         line[strcspn(line, "\n")] = '\0';
-        
-        }
-        printf("%s\n", line);
+        // First, tokenize the line to extract data
+        char date[11];
+        char time[6];
+        char steps[1000];
+        tokeniseRecord(line, ",", date, time, steps);
+
+        // Store the data in the structure
+        strcpy(records[line_count].date, date);
+        strcpy(records[line_count].time, time);
+        records[line_count].steps = atoi(steps);
+
+        printf("%s/%s/%d\n", date, time, records[line_count].steps);
+
         line_count++;
     }
 
-
-  //closing file
+    // Close the file
     fclose(file);
+
     return 0;
-
 }
-
 //references:
 //read_file.c(week4)
 //https://www.javatpoint.com/rewind-in-c (rewind function)

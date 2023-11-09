@@ -13,6 +13,7 @@ int main() {
     switch (a)
     {
         case 0: printf ("Option 0 has been selected\n");
+        printf("gg")
         break;
 
         case 1: printf ("Option 1 has been selected\n");
